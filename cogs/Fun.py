@@ -104,12 +104,12 @@ class Fun(commands.Cog):
         await ctx.send(f"El resultado es: {x1}")
     
     @commands.command()
-    async def log(self, ctx, a=0, b=0):
+    async def log(self, ctx, a, b):
         if a == "e":
             a = math.e
         if b == "e":
             b = math.e
-        x1 = math.log(b, a)
+        x1 = math.log(int(b), int(a))
         await ctx.send(f"El resultado es: {x1}")
 
 
