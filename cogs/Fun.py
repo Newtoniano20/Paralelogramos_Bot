@@ -102,6 +102,16 @@ class Fun(commands.Cog):
     async def sub(self, ctx, a=0, b=0):
         x1 = a - b
         await ctx.send(f"El resultado es: {x1}")
+    
+    @commands.command()
+    async def log(self, ctx, a=0, b=0):
+        if a == "e":
+            a = math.e
+        if b == "e":
+            b = math.e
+        x1 = math.log(b, a)
+        await ctx.send(f"El resultado es: {x1}")
+
 
 def setup(client):
     client.add_cog(Fun(client))
