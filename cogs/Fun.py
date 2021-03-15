@@ -1,10 +1,11 @@
 import discord
 from discord.ext import commands
 import random as rnd
+import math
 
 class Fun(commands.Cog):
     def __init__(self, client):
-        self.client = client
+        client = client
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -39,6 +40,68 @@ class Fun(commands.Cog):
         emoji2 = "\N{THUMBS DOWN SIGN}"
         await test.add_reaction(emoji)
         await test.add_reaction(emoji2)
+    
+    @commands.command()
+    async def eq(self, ctx, a=0, b=0, c=0):
+        x1 = 0
+        d = 0
+        d = b*b - 4*a*c
+
+        if b == 0:
+            x1 = math.sqrt((- c)/a)
+            await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have a solution but there is only one:\nx1 = {x1}          ')
+        
+        elif a == 0:
+            x1 = (- c)/b
+            await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have a solution but there is only one:\nx1 = {x1}          ')
+
+        elif d < 0:
+            await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c}\n Does not have a solution:\nDiscriminator = {d}                ')
+
+        elif d == 0:
+            try:
+                x1 = (-b + math.sqrt(b**2 - 4*a*c)) / (2*a)
+                await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have a solution but there is only one:\nx1 = {x1}          ')
+            except:
+                await ctx.send("Math error: 0/0")
+                await ctx.send(f'-[{b}] + math.sqrt([{b}]^2 - 4·[{a}]·[{c}]) / 2·[{a}]')
+        else:
+            try:
+                x1 = (-b + math.sqrt(b**2 - 4*a*c)) / (2*a)
+                x2 = (-b - math.sqrt(b**2 - 4*a*c)) / (2*a)
+                await ctx.send('', f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have both solutions\nx1 = {x1} x2 = {x2}         ')
+            except:
+                await ctx.send("Math error: 0/0")
+                await ctx.send(f'-[{b}] + math.sqrt([{b}]^2 - 4·[{a}]·[{c}]) / 2·[{a}]')
+        try:
+            await ctx.send("X1 = ", x1)
+            await ctx.send("X2 = ", x2)
+        except:
+            await ctx.send("d = ", d)
+    @commands.command()
+    async def sqrt(self, ctx, num):
+        num = math.sqrt(int(num))
+        await ctx.send(f"El resultado es: {num}")
+
+    @commands.command()
+    async def mult(self, ctx, a=0, b=0):
+        x1 = a * b
+        await ctx.send(f"El resultado es: {x1}")
+    
+    @commands.command()
+    async def div(self, ctx, a=0, b=0):
+        x1 = a / b
+        await ctx.send(f"El resultado es: {x1}")
+    
+    @commands.command()
+    async def sum(self, ctx, a=0, b=0):
+        x1 = a + b
+        await ctx.send(f"El resultado es: {x1}")
+    
+    @commands.command()
+    async def sub(self, ctx, a=0, b=0):
+        x1 = a - b
+        await ctx.send(f"El resultado es: {x1}")
 
 def setup(client):
     client.add_cog(Fun(client))
