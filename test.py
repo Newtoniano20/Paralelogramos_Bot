@@ -1,5 +1,3 @@
-import time
-
-seconds = time.time()
-now  = time.ctime(seconds)
-print(now)
+from googlesearch import search
+z = search("Google",  num_results=1)
+print(z[0])

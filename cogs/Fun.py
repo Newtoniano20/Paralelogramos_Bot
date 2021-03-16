@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import random as rnd
+from googlesearch import search
 
 class Fun(commands.Cog):
     def __init__(self, client):
@@ -40,6 +41,41 @@ class Fun(commands.Cog):
         await test.add_reaction(emoji)
         await test.add_reaction(emoji2)
 
+    @commands.command()
+    async def search(self, ctx, *theme):
+        test = len(theme)
+        themes = ""
+        for n in range(test):
+            themes = themes + " " + theme[n]
+        try:    
+            x1 = search(themes)
+            await ctx.send(x1[0])
+        except:
+            await ctx.send("error")
+
+    @commands.command()
+    async def search2(self, ctx, *theme):
+        test = len(theme)
+        themes = ""
+        for n in range(test):
+            themes = themes + " " + theme[n]
+        try:    
+            x1 = search(themes)
+            await ctx.send(x1[1])
+        except:
+            await ctx.send("error")
+    
+    @commands.command()
+    async def searchall(self, ctx, *theme):
+        test = len(theme)
+        themes = ""
+        for n in range(test):
+            themes = themes + " " + theme[n]
+        try:    
+            x1 = search(themes)
+            await ctx.send(x1)
+        except:
+            await ctx.send("error")
 
 def setup(client):
     client.add_cog(Fun(client))

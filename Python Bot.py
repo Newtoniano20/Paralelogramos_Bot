@@ -28,7 +28,7 @@ async def ping(ctx):
 @client.command()
 async def help(ctx):
     HelpCommand = discord.Embed(title="__Paralelogramos Bot Help__", description="Bot exclusivo del servidor Paralelogramos. Los comandos estan a continuación: ", color=0x00ff00)
-    HelpCommand.add_field(name="**Fun:**", value="iq -> Te dice el IQ que aparentas", inline=False)
+    HelpCommand.add_field(name="**Fun:**", value="iq -> Te dice el IQ que aparentas\n search -> Buscar algo en google", inline=False)
     HelpCommand.add_field(name="**Info:**", value="ping -> Ver la latencia del Bot \n time -> Hora actual \n link -> Invitación al servidor\n avatar -> Ver el avatar de alguien\n invite -> Pedir una invitación al servidor de un solo uso\n minecraft -> La ip del servidor de minecraft\n poll -> Iniciar una votación", inline=False)
     HelpCommand.add_field(name="Este Bot sigue en desarrollo por [👑] Newtoniano , esta es una versión beta", value="Para cualquier problema hablen con Administración o Moderación", inline=False)
     HelpCommand.set_image(url="https://cdn.discordapp.com/attachments/695641854045061150/787416144163110912/Sin_titulo.mp4.gif")
