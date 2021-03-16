@@ -18,7 +18,8 @@ async def on_command_error(ctx, error):
         await ctx.send('Insuficient Permissions')
     if isinstance(error, commands.CommandNotFound):
         await ctx.send('Command does not exist')
-
+    if isinstance(error, commands.MemberNotFound):
+        await ctx.send('Member not found')
 
 @client.command()
 async def ping(ctx):

@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 import random as rnd
-import math
 
 class Fun(commands.Cog):
     def __init__(self, client):

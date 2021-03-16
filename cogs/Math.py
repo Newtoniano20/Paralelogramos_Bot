@@ -189,8 +189,8 @@ class Moderation(commands.Cog):
         await ctx.send(f"El resultado es: {x1}")
     
     @commands.command()
-    async def sum(self, ctx, a=0, b=0):
-        x1 = a + b
+    async def sum(self, ctx, a=0, b=0, c=0, d=0):
+        x1 = a + b + c + d
         await ctx.send(f"El resultado es: {x1}")
     
     @commands.command()
