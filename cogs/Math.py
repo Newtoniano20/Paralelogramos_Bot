@@ -21,9 +21,10 @@ class Moderation(commands.Cog):
     @commands.command()
     async def sin(self, ctx, a):
         if a == "pi":
-            a = mh.pi
-        x1 = mh.sin(float(a))
-        await ctx.send(f"El resultado es: {x1}")
+            await ctx.send(f"El resultado es: 0")
+        else:    
+            x1 = mh.sin(float(a))
+            await ctx.send(f"El resultado es: {x1}")
     
     @commands.command()
     async def cos(self, ctx, a):
@@ -35,9 +36,10 @@ class Moderation(commands.Cog):
     @commands.command()
     async def tg(self, ctx, a):
         if a == "pi":
-            a = mh.pi
-        x1 = mh.tan(float(a))
-        await ctx.send(f"El resultado es: {x1}")
+            await ctx.send(f"El resultado es: -1")
+        else:
+            x1 = mh.tan(float(a))
+            await ctx.send(f"El resultado es: {x1}")
     
     
     @commands.command()
@@ -155,7 +157,7 @@ class Moderation(commands.Cog):
 
         elif d == 0:
             try:
-                x1 = (-b + mh.sqrt(b**2 - 4*a*c)) / (2*a)
+                x1 = -b/(2*a)
                 await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have a solution but there is only one:\nx1 = {x1}          ')
             except:
                 await ctx.send("Math error: 0/0")
