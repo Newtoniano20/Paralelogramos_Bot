@@ -140,41 +140,36 @@ class Moderation(commands.Cog):
 
     @commands.command()
     async def eq(self, ctx, a=0, b=0, c=0):
-        x1 = 0
-        d = 0
         d = b*b - 4*a*c
+        q = 2*a
+        if a == 0 and b == 0:
+            await ctx.send(f"Polynomial:\n{str(a)}x^2 / {str(b)}x / {c}\n Does not have a solution: {c} = 0")
 
-        if b == 0:
-            x1 = mh.sqrt((- c)/a)
-            await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have a solution but there is only one:\nx1 = {x1}          ')
-        
         elif a == 0:
             x1 = (- c)/b
-            await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have a solution but there is only one:\nx1 = {x1}          ')
+            await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have a solution but there is only one:\nx1 = {x1}')
 
+        elif b == 0:
+            try:
+                x1 = mh.sqrt((- c)/a)
+                await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have both solutions: \nx1 = {x1}\nx2 = {-x1}')
+            except: 
+                await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c}\n Does not have a solution:\nDiscriminator = {-c/a}')
+        elif c == 0:
+            x1 = 0
+            x2 = -b/a
+            await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have both solutions: \nx1 = {x1}\nx2 = {x2}')
+        
         elif d < 0:
-            await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c}\n Does not have a solution:\nDiscriminator = {d}                ')
+            await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c}\n Does not have a solution: \nDiscriminator = {d}')
 
         elif d == 0:
-            try:
-                x1 = -b/(2*a)
-                await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have a solution but there is only one:\nx1 = {x1}          ')
-            except:
-                await ctx.send("Math error: 0/0")
-                await ctx.send(f'-[{b}] + math.sqrt([{b}]^2 - 4·[{a}]·[{c}]) / 2·[{a}]')
+            x1 = -b/(q)
+            await ctx.send(f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have a solution but there is only one:\nx1 = {x1}')
         else:
-            try:
-                x1 = (-b + mh.sqrt(b**2 - 4*a*c)) / (2*a)
-                x2 = (-b - mh.sqrt(b**2 - 4*a*c)) / (2*a)
-                await ctx.send('', f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have both solutions\nx1 = {x1} x2 = {x2}         ')
-            except:
-                await ctx.send("Math error: 0/0")
-                await ctx.send(f'-[{b}] + math.sqrt([{b}]^2 - 4·[{a}]·[{c}]) / 2·[{a}]')
-        try:
-            await ctx.send("X1 = ", x1)
-            await ctx.send("X2 = ", x2)
-        except:
-            await ctx.send("d = ", d)
+            x1 = (-b + mh.sqrt(d)) / (q)
+            x2 = (-b - mh.sqrt(d)) / (q)
+            await ctx.send('', f'Polynomial:\n{str(a)}x^2 / {str(b)}x / {c} \n Does have both solutions\nx1 = {x1} x2 = {x2}')
     @commands.command()
     async def sqrt(self, ctx, num):
         num = mh.sqrt(float(num))
