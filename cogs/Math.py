@@ -2,6 +2,11 @@ import discord
 from discord.ext import commands
 import time
 import math as mh
+import sympy as sp
+
+def derivate_main(a, b, c):
+    x = sp.Symbol("x")
+    return str(sp.diff(a*x**2 + b*x + c))
 
 class Moderation(commands.Cog):
     def __init__(self, client):
@@ -17,6 +22,11 @@ class Moderation(commands.Cog):
         Math.add_field(name="**Comandos Basicos:**", value="eq -> Resolución de equaciones. \n Uso: .eq <a> <b> <c> \n sum -> Sumar dos numeros \n Uso: .sum <a> <b>\n sub -> Restar dos numeros \n Uso: .sub <a> <b>\n mult -> Multiplicar dos numeros \n Uso: .mult <a> <b>\n div -> Dividir dos numeros \n Uso: .div <a> <b>", inline=False)
         Math.add_field(name="**Trigonometria:**", value="LOS ANGULOS ESTAN EN RADIANES!!\nPara usar el numero pi, simplemente poned 'pi'\n.sin -> sin(a)\n.cos -> cos(a)\n.tg -> tg(a)\n.cos_angle_sum -> cos(a+b)\n.cos_angle_sub -> cos(a-b)\n.sin_angle_sum -> sin(a+b)\n.sin_angle_sub -> sin(a-b)\n.tg_angle_sum -> tg(a+b)\n.tg_angle_sub -> tg(a-b)\n.two_alpha_sin -> sin(2a)\n.two_alpha_cos -> cos(2a)\n.two_alpha_tg -> tg(2a)\n.half_alpha_sin -> sin(a/2)\n.half_alpha_cos -> cos(a/2)\n.half_alpha_tg -> tg(a/2)", inline=False)
         await ctx.send(embed=Math)
+
+
+    @commands.command()
+    async def derivate(self, ctx, a, b, c):
+        await ctx.send(derivate_main(a, b, c))
 
     @commands.command()
     async def sin(self, ctx, a):

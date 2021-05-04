@@ -54,6 +54,10 @@ class Fun(commands.Cog):
             await ctx.send("error")
 
     @commands.command()
+    async def yopino(self, ctx, *theme):
+        await ctx.send("Majo pero no me liaria")
+
+    @commands.command()
     async def search2(self, ctx, *theme):
         test = len(theme)
         themes = ""
