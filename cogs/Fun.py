@@ -59,30 +59,23 @@ class Fun(commands.Cog):
             await ctx.send(f"Mi opinon sobre {member} es: {phrase}")
         else:
             await ctx.send(f"Hola <@{ctx.message.author.id}>, {phrase}")
-            
-    @commands.command()
-    async def search2(self, ctx, *theme):
-        test = len(theme)
-        themes = ""
-        for n in range(test):
-            themes = themes + " " + theme[n]
-        try:    
-            x1 = search(themes)
-            await ctx.send(x1[1])
-        except:
-            await ctx.send("error")
     
     @commands.command()
-    async def searchall(self, ctx, *theme):
-        test = len(theme)
-        themes = ""
-        for n in range(test):
-            themes = themes + " " + theme[n]
-        try:    
-            x1 = search(themes)
-            await ctx.send(x1)
+    async def randomize(self, ctx, member1, *members):
+        listn = []
+        try:
+            for m in members: 
+                listn.append(m)
+            listn.append(member1)
         except:
-            await ctx.send("error")
+            listn.append(member1)
+        random.shuffle(listn)
+        loop = 0
+        res = ""
+        for l in listn:
+            res += l + " "
+            loop += 1
+        await ctx.send(res)
 
 def setup(client):
     client.add_cog(Fun(client))

@@ -5,7 +5,7 @@ import os
 import random
 import numpy as np
 
-print("\nParalelogramos Bot:\n -> Bot Privado del servidor Paralelogramos.\n -> No se debe usar sin autorización de Gondoraragorn#1173.\n -> Bot Desarrollado Unicamente para Paralelogramos.\n")
+print("\nParalelogramos Bot:\n -> Bot Privado del servidor Paralelogramos.\n -> Bot desarrollado por Gondoraragorn#1173.\n -> Invitación al servidor de Paralelogramos: https://discord.gg/PgCBfVErYd \n")
 print("Bot Starting...")
 client = commands.Bot(command_prefix='.', help_command=None)
 
@@ -60,23 +60,6 @@ async def unload(ctx, extension):
 async def stop(ctx):
     await ctx.send('Bot status is turning offline. See you!')
     exit()
-
-@client.command()
-async def randomize(ctx, member1, *members):
-    listn = []
-    members.append(member1)
-    for m in members: 
-        listn.append(m)
-    random.shuffle(listn)
-    loop = 0
-    res = ""
-    for l in listn:
-        res += l + " "
-        loop += 1
-    await ctx.send(res)
-
-
-
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
