@@ -1,0 +1,4 @@
+#Modulos Necesarios Para utilizar este bot:
+numpy
+discord
+googlesearch-python

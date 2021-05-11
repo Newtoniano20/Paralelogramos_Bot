@@ -2,15 +2,13 @@ import discord
 from discord.ext import commands
 import random as rnd
 from googlesearch import search
+from mpmath.functions.functions import im
+import random
 
 class Fun(commands.Cog):
     def __init__(self, client):
         client = client
 
-    @commands.Cog.listener()
-    async def on_ready(self):
-        print('Fun is online')
-    
     @commands.command()
     async def iq(self, ctx):
         num = rnd.randrange(0, 201)
@@ -54,9 +52,14 @@ class Fun(commands.Cog):
             await ctx.send("error")
 
     @commands.command()
-    async def yopino(self, ctx, *theme):
-        await ctx.send("Majo pero no me liaria")
-
+    async def yopino(self, ctx, member=None):
+        listn2 = ["Majo pero no me liaria", "No hablamos mucho pero molaria quedar", "Eres completamente inutil"]
+        phrase = random.choice(listn2)
+        if member != None:
+            await ctx.send(f"Mi opinon sobre {member} es: {phrase}")
+        else:
+            await ctx.send(f"Hola <@{ctx.message.author.id}>, {phrase}")
+            
     @commands.command()
     async def search2(self, ctx, *theme):
         test = len(theme)

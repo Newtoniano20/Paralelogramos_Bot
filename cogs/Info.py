@@ -1,9 +1,5 @@
 import discord
-from discord import message
-from discord import channel
-from discord import user
 from discord.ext import commands
-from discord import TextChannel
 import time as tm
 
 from discord.invite import Invite
@@ -12,10 +8,6 @@ class Info(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.Cog.listener()
-    async def on_ready(self):
-        print('Info is online')
-    
     @commands.command()
     async def time(self, ctx):
         seconds = tm.time()
