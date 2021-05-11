@@ -1,8 +1,6 @@
 import discord
-from discord import message
 from discord.ext import commands
 import os
-import random
 import numpy as np
 
 print("\nParalelogramos Bot:\n -> Bot Privado del servidor Paralelogramos.\n -> Bot desarrollado por Gondoraragorn#1173.\n -> Invitación al servidor de Paralelogramos: https://discord.gg/PgCBfVErYd \n")

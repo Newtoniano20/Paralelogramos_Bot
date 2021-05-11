@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 import random as rnd
 from googlesearch import search
-from mpmath.functions.functions import im
 import random
 
 class Fun(commands.Cog):
