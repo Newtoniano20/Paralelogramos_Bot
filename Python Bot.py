@@ -57,7 +57,8 @@ async def unload(ctx, extension):
 @commands.has_role("Bot Perms")
 async def stop(ctx):
     await ctx.send('Bot status is turning offline. See you!')
-    exit()
+    print("Bot status turning offline\n Shutting Down...")
+    await client.close()
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
