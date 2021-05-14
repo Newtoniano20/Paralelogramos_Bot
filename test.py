@@ -1,7 +1,6 @@
-import sympy as sp
+import base64
+ENCODED_KEY=b'TnpFd01USTBORFkwTVRBd016UXpPRFE1LlhydjQ4US5OdEE3aXk0OU9KM1VvOWpoNjBHTFE0WFJRWVk='
 
-def derivate_main(a, b, c):
-    x = sp.Symbol("x")
-    return f"{sp.diff(a*x**2 + b*x + c)}"
-
-print(f"{derivate_main(1, 2, 1)}")
+KEY = str(base64.b64decode(ENCODED_KEY))
+KEY = KEY.format(str)
+print(KEY)

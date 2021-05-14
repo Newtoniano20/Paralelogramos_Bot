@@ -1,8 +1,9 @@
+from typing import ByteString
 import discord
 from discord.ext import commands
 import os
 import numpy as np
-
+import base64
 print("\nParalelogramos Bot:\n -> Bot Privado del servidor Paralelogramos.\n -> Bot desarrollado por Gondoraragorn#1173.\n -> Invitación al servidor de Paralelogramos: https://discord.gg/PgCBfVErYd \n")
 print("Bot Starting...")
 client = commands.Bot(command_prefix='.', help_command=None)
@@ -65,4 +66,7 @@ for filename in os.listdir('./cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 if __name__ == '__main__':
-    client.run('NzEwMTI0NDY0MTAwMzQzODQ5.Xrv48Q.NtA7iy49OJ3Uo9jh60GLQ4XRQYY')
+    ENCODED_KEY='TnpFd01USTBORFkwTVRBd016UXpPRFE1LlhydjQ4US5OdEE3aXk0OU9KM1VvOWpoNjBHTFE0WFJRWVk='
+    KEY = str(base64.b64decode(ENCODED_KEY))
+    #KEY = "NzEwMTI0NDY0MTAwMzQzODQ5.Xrv48Q.NtA7iy49OJ3Uo9jh60GLQ4XRQYY"
+    client.run(KEY.format(str))
