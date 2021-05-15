@@ -1,12 +1,16 @@
 import discord
+from discord import client
+from discord import emoji
 from discord.ext import commands
 import random as rnd
 from googlesearch import search
 import random
-
 class Fun(commands.Cog):
     def __init__(self, client):
         client = client
+    
+    async def on_ready(self):
+        print('Fun is Online')
 
     @commands.command()
     async def iq(self, ctx):
@@ -42,19 +46,26 @@ class Fun(commands.Cog):
     async def search(self, ctx, *theme):
         test = len(theme)
         themes = ""
+        try:   
+            Ed_Moriarty = commands.Bot.get_emoji(self, id="822892042182459512")
+        except:
+            await ctx.send("Error")
         for n in range(test):
             themes = themes + " " + theme[n]
+        await ctx.send(f"{Ed_Moriarty} Searching: {themes}")
         try:    
-            x1 = search(themes)
+            x1 = search(themes, lang="es")
             await ctx.send(x1[0])
         except:
             await ctx.send("error")
 
     @commands.command()
     async def yopino(self, ctx, member=None):
-        listn2 = ["Majo pero no me liaria", "No hablamos mucho pero molaria quedar", "Eres completamente inutil"]
-        phrase = random.choice(listn2)
+        phrase_list = ["Majo pero no me liaria", "No hablamos mucho pero molaria quedar", "Eres completamente inutil"]
+        phrase = random.choice(phrase_list)
         if member != None:
+            await ctx.send(f"Mi opinon sobre {member} es: {phrase}")
+        elif member == str:
             await ctx.send(f"Mi opinon sobre {member} es: {phrase}")
         else:
             await ctx.send(f"Hola <@{ctx.message.author.id}>, {phrase}")

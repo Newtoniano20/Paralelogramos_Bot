@@ -1,6 +1,0 @@
-import base64
-ENCODED_KEY=b'TnpFd01USTBORFkwTVRBd016UXpPRFE1LlhydjQ4US5OdEE3aXk0OU9KM1VvOWpoNjBHTFE0WFJRWVk='
-
-KEY = str(base64.b64decode(ENCODED_KEY))
-KEY = KEY.format(str)
-print(KEY)
