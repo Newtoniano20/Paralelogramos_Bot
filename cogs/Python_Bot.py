@@ -82,7 +82,7 @@ Ed_Moriarty = client.get_emoji(id="822892042182459512")
 if __name__ == '__main__':
     print("\nParalelogramos Bot:\n -> Bot Privado del servidor Paralelogramos.\n -> Bot desarrollado por Gondoraragorn#1173.\n -> Invitación al servidor de Paralelogramos: https://discord.gg/PgCBfVErYd \n")
     print("Bot Starting...")
-    for filename in listdir('.'):
+    for filename in listdir('./cogs'):
         if filename.endswith('.py') and filename != 'Python_Bot.py' and filename != '__init__.py':
             client.load_extension(f'{filename[:-3]}')
 
