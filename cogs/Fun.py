@@ -5,6 +5,7 @@ from discord.ext import commands
 import random as rnd
 from googlesearch import search
 import random
+from requests import __title__
 class Fun(commands.Cog):
     def __init__(self, client):
         client = client
@@ -46,16 +47,13 @@ class Fun(commands.Cog):
     async def search(self, ctx, *theme):
         test = len(theme)
         themes = ""
-        try:   
-            Ed_Moriarty = commands.Bot.get_emoji(self, id="822892042182459512")
-        except:
-            await ctx.send("Error")
         for n in range(test):
             themes = themes + " " + theme[n]
-        await ctx.send(f"{Ed_Moriarty} Searching: {themes}")
+        messagesearch = discord.Embed(title=f'**Searching:** {themes}', color=0x00ff00)
+        await ctx.send(embed=messagesearch)
         try:    
             x1 = search(themes, lang="es")
-            await ctx.send(x1[0])
+            await ctx.send(f'Resultado: {x1[0]}')
         except:
             await ctx.send("error")
 
@@ -71,7 +69,7 @@ class Fun(commands.Cog):
             await ctx.send(f"Hola <@{ctx.message.author.id}>, {phrase}")
     
     @commands.command()
-    async def randomize(self, ctx, member1, *members):
+    async def random(self, ctx, member1, *members):
         listn = []
         try:
             for m in members: 
