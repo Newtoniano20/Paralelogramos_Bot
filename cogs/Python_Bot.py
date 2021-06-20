@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
-from os import listdir, name
-from numpy import exp, round
+from os import listdir
+from numpy import round
 from discord_slash import SlashCommand
 
 if __name__ == '__main__':
@@ -15,8 +15,8 @@ if __name__ == '__main__':
 
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.online, activity=discord.Game('Bot Privado de Paralelgoramos'))
     print('Bot is Online')
+    await client.change_presence(status=discord.Status.online, activity=discord.Game('Bot Privado de Paralelgoramos'))
     print(f"Ping: {int(round(client.latency * 1000))}ms")
 
 @client.event
