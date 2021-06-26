@@ -1,11 +1,8 @@
 import discord
-from discord import client
-from discord import emoji
 from discord.ext import commands
-import random as rnd
 from googlesearch import search
-import random
-from requests import __title__
+from random import choice, randrange, shuffle
+
 class Fun(commands.Cog):
     def __init__(self, client):
         client = client
@@ -15,7 +12,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def iq(self, ctx):
-        num = rnd.randrange(0, 201)
+        num = randrange(0, 201)
         if num <= 65:
             await ctx.send(f'Eres Literalmente Mongolo! Con un iq de: {num}')
         if 65 < num < 100:
@@ -36,7 +33,7 @@ class Fun(commands.Cog):
         themes = ""
         for n in range(test):
             themes = themes + " " + theme[n]
-        polls = discord.Embed(title=f"**{themes}**", description=f"Esta es una votación para decidir si: {str(themes)}", color=0x00ff00)
+        polls = discord.Embed(title=f"**Paralelovotación:**", description=f"{str(themes)}", color=0x00ff00)
         test = await ctx.send(embed=polls)
         emoji = '\N{THUMBS UP SIGN}'
         emoji2 = "\N{THUMBS DOWN SIGN}"
@@ -60,7 +57,7 @@ class Fun(commands.Cog):
     @commands.command()
     async def yopino(self, ctx, member=None):
         phrase_list = ["Majo pero no me liaria", "No hablamos mucho pero molaria quedar", "Eres completamente inutil"]
-        phrase = random.choice(phrase_list)
+        phrase = choice(phrase_list)
         if member != None:
             await ctx.send(f"Mi opinon sobre {member} es: {phrase}")
         elif member == str:
@@ -77,7 +74,7 @@ class Fun(commands.Cog):
             listn.append(member1)
         except:
             listn.append(member1)
-        random.shuffle(listn)
+        shuffle(listn)
         loop = 0
         res = ""
         for l in listn:

@@ -1,18 +1,10 @@
 import discord
 from discord.ext import commands
-import time as tm
-from discord.invite import Invite
 
 class Info(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()
-    async def time(self, ctx):
-        seconds = tm.time()
-        now = tm.ctime(seconds)
-        await ctx.send(f'La hora actual es: {now}')
-    
     @commands.command()
     async def invite(self, ctx):
         invitelink = await ctx.channel.create_invite(max_uses=1,unique=True)

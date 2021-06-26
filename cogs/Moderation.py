@@ -27,6 +27,6 @@ class Moderation(commands.Cog):
     @commands.has_permissions(administrator=True)
     async def ban(self, ctx, member: discord.member, *, reason=None):
         await member.ban(reason=reason)
-
+    
 def setup(client):
     client.add_cog(Moderation(client))

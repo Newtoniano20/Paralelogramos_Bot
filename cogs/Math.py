@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import math as mh
 
-class Moderation(commands.Cog):
+class Math(commands.Cog):
     def __init__(self, client):
         self.client = client
     @commands.command()
@@ -106,4 +106,4 @@ class Moderation(commands.Cog):
     
 
 def setup(client):
-    client.add_cog(Moderation(client))
+    client.add_cog(Math(client))
