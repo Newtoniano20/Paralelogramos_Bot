@@ -56,5 +56,5 @@ if __name__ == '__main__':
 
     client.load_extension(f'Commands')
 
-    KEY = "NzEwMTI0NDY0MTAwMzQzODQ5.Xrv48Q.NtA7iy49OJ3Uo9jh60GLQ4XRQYY"
+    KEY = ""
     client.run(KEY)
