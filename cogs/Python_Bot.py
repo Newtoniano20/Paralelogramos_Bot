@@ -51,10 +51,10 @@ async def stop(ctx):
     await client.close()
 
 if __name__ == '__main__':
-    print("\nParalelogramos Bot:\n -> Bot Privado del servidor Paralelogramos.\n -> Bot desarrollado por Gondoraragorn#1173.\n -> Invitación al servidor de Paralelogramos: https://discord.gg/PgCBfVErYd \n")
+    print("\nParalelogramos Bot:\n -> Bot Privado del servidor Paralelogramos.\n -> Bot desarrollado por Newtoniano#1173.\n -> Invitación al servidor de Paralelogramos: https://discord.gg/PgCBfVErYd \n")
     print("Bot Starting...")
 
     client.load_extension(f'Commands')
 
-    KEY = "NzEwMTI0NDY0MTAwMzQzODQ5.Xrv48Q.NtA7iy49OJ3Uo9jh60GLQ4XRQYY"
+    KEY = ""
     client.run(KEY)
