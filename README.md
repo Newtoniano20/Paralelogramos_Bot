@@ -50,11 +50,11 @@ Usage: .div <a> <b>
 ```
 
 #### Trigonometry
-ANGLES MUST BE IN RADIANS
-IF you want to use pi, just type "pi" as the number
-.sin -> sin(a)
-.cos -> cos(a)
-.tg -> tg(a)
+ANGLES MUST BE IN RADIANS<br />
+IF you want to use pi, just type "pi" as the number<br />
+.sin -> sin(a)<br />
+.cos -> cos(a)<br />
+.tg -> tg(a)<br />
 
 ## Installation
 1. Install a python version between 3.5 and 3.8 from https://www.python.org/downloads/
