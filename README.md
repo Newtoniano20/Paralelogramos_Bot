@@ -8,8 +8,6 @@
 
 This is a Custom built bot for my old discord server which includes some moderation and fun commands. 
 
-### <b>[DISCLAIMER] Discord.py is now deprecated and was discontinued on 28th August 2021.</b>
-
 ## Commands
 All commands must be used with the prefix "."
 ### Fun
