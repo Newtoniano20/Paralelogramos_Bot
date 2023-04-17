@@ -14,11 +14,8 @@ class Math(commands.Cog):
 
     @commands.command()
     async def sin(self, ctx, a):
-        if a == "pi":
-            await ctx.send(f"El resultado es: 0")
-        else:    
-            x1 = mh.sin(float(a))
-            await ctx.send(f"El resultado es: {x1}")
+        message = "El resultado es: {0}".format(0 if a == "pi" else mh.sin(float(a)))
+        await ctx.send(message)
     
     @commands.command()
     async def cos(self, ctx, a):
@@ -29,11 +26,8 @@ class Math(commands.Cog):
     
     @commands.command()
     async def tg(self, ctx, a):
-        if a == "pi":
-            await ctx.send(f"El resultado es: -1")
-        else:
-            x1 = mh.tan(float(a))
-            await ctx.send(f"El resultado es: {x1}")
+        message = "El resultado es: {0}".format(-1 if a == "pi" else mh.tan(float(a)))
+        await ctx.send(message)
 
     @commands.command()
     async def eq(self, ctx, a=0, b=0, c=0):
