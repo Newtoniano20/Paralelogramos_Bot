@@ -1,10 +1,14 @@
 import discord
 from discord.ext import commands
 from numpy import round
+from googlesearch import search
+import cogs.Commands as cg
 #from discord_slash import SlashCommand
 
 if __name__ == '__main__':
-    client = commands.Bot(command_prefix='.', help_command=None)
+    intents = discord.Intents.all()
+    intents.message_content = True
+    client = commands.Bot(command_prefix='.', help_command=None, intents=intents)
     #slash = SlashCommand(client, sync_commands=True)
 
 HelpCommand = discord.Embed(title="__Paralelogramos Bot Help__", description="Bot exclusivo del servidor Paralelogramos. Los comandos estan a continuación: ", color=0x00ff00)
@@ -17,6 +21,7 @@ HelpCommand.set_image(url='https://cdn.discordapp.com/attachments/69564185404506
 @client.event
 async def on_ready():
     print('Bot is Online')
+    await cg.setup(client=client)
     await client.change_presence(status=discord.Status.online, activity=discord.Game('Bot Privado de Paralelgoramos'))
     print(f"Ping: {int(round(client.latency * 1000))}ms \n\n ==== Log ====\n")
 
@@ -54,7 +59,6 @@ if __name__ == '__main__':
     print("\nParalelogramos Bot:\n -> Bot Privado del servidor Paralelogramos.\n -> Bot desarrollado por Newtoniano#1173.\n -> Invitación al servidor de Paralelogramos: https://discord.gg/PgCBfVErYd \n")
     print("Bot Starting...")
 
-    client.load_extension(f'Commands')
 
     KEY = ""
     client.run(KEY)

@@ -6,8 +6,6 @@ from random import choice, randrange, shuffle
 class Fun(commands.Cog):
     def __init__(self, client):
         client = client
-    
-    async def on_ready(self):
         print('Fun is Online')
 
     @commands.command()
@@ -81,6 +79,14 @@ class Fun(commands.Cog):
             res += l + " "
             loop += 1
         await ctx.send(res)
+    
+    @commands.command()
+    async def say(self, ctx, *theme): 
+        test = len(theme)
+        themes = ""
+        for n in range(test):
+            themes = themes + " " + theme[n]
+        await ctx.send(themes)
 
 def setup(client):
     client.add_cog(Fun(client))
