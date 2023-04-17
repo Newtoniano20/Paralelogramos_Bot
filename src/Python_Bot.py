@@ -23,26 +23,31 @@ async def on_ready():
     print('Bot is Online')
     await cg.setup(client=client)
     await client.change_presence(status=discord.Status.online, activity=discord.Game('Bot Privado de Paralelgoramos'))
-    print(f"Ping: {int(round(client.latency * 1000))}ms \n\n ==== Log ====\n")
+    print(f"Ping: {round(client.latency * 1000)}ms \n\n ==== Log ====\n")
 
 @client.event
 async def on_command_error(ctx, error):
+    message = ""
+
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('Please pass in all required arguments')
         print(f"Error: Missing required arguments // by {ctx.message.author}")
-    if isinstance(error, commands.MissingRole):
-        await ctx.send('Insuficient Permissions')
+        message = 'Please pass in all required arguments'
+    elif isinstance(error, commands.MissingRole):
         print(f"Error: Insuficient Permissions //  by {ctx.message.author}")
-    if isinstance(error, commands.CommandNotFound):
+        message = 'Insuficient Permissions'
+    elif isinstance(error, commands.CommandNotFound):
         print(f"Error: Command does not exist //  by {ctx.message.author}")
-        await ctx.send('Command does not exist')
-    if isinstance(error, commands.MemberNotFound):
+        message = 'Command does not exist'
+    elif isinstance(error, commands.MemberNotFound):
         print(f"Error: Member not found // by {ctx.message.author}")
-        await ctx.send('Member not found')
+        message = 'Member not found'
+    
+    if message:
+        await ctx.send(message)
 
 @client.command()
 async def ping(ctx):
-    await ctx.send(f'Pong! {int(round(client.latency * 1000))}ms')
+    await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
 
 @client.command()
 async def help(ctx, theme=None):
