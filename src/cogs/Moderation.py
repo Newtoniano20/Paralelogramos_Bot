@@ -5,14 +5,12 @@ import time
 class Moderation(commands.Cog):
     def __init__(self, client):
         self.client = client
-        
+
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def clear(self, ctx, ammount=5):
-        if ammount == 1:
-            s = ""
-        else:
-            s = "s"
+        s = "" if ammount == 1 else "s"
+
         await ctx.channel.purge(limit=ammount+1)
         await ctx.send(f":sunglasses: He eliminado {ammount} mensaje{s}")
         time.sleep(2)
